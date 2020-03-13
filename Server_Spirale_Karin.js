@@ -47,6 +47,9 @@ var NewoffsetTop=400;
 
 //socket Angaben
 
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, "public", 'index_p5.html'));
+});
 app.use(express.static(path.join(__dirname, "public")));
 
 console.log("my server is running");
