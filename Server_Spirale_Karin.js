@@ -1,6 +1,6 @@
 /**
  * Created by hzuellig on 12.02.20.
- * changed Karin 12.02.20
+ * changed by Karin 13.02.20
  */
 var express = require('express');
 var app= express();
@@ -38,13 +38,26 @@ let Newyvalues =[];
 let yvalues =[]; // Using an array to store height values for the wave
 let dx = (Math.PI*2 / period) * xspacing;// Value for incrementing x
 let Ndx = (Math.PI*2 / Nperiod) * xspacing;// Value for incrementing x
-
+let yvaluesArr1=[];
+let yvaluesArr2=[];
 
 var offsetTop=350;
 var NewoffsetTop=400;
 
- 
+let allClientsInfo = []// Array für die verschiednen Clients
 
+// clientsMaxAmp = [
+//     {
+//         socketid:'',
+//         maxAmp: 455,
+//         yvalues: yvaluesArr1
+//     },
+//      {
+//         socketid:'',
+//         maxAmp: 330,
+//         yvalues: yvaluesArr2
+//      },
+//  ]
 //socket Angaben
 
 app.get('/', function (req, res) {
@@ -172,6 +185,3 @@ function scale (num, in_min, in_max, out_min, out_max) {
 
       //console.log(yvalues);
       }
-
-
-

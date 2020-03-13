@@ -47,7 +47,7 @@ function updateSettings(data){
     settings.Newyvalues=data;
     
     //console.log (settings.yvalues);
-    background(200,20,20);
+    background(0);
     renderWave();
 }
 
