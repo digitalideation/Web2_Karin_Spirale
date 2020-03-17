@@ -93,7 +93,7 @@ function draw(){
      //console.log(mywave)
     let localX=0;
 
-    stroke(mywave.colors);
+    stroke(mywave.color);
 
         
         for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
