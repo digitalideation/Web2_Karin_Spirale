@@ -92,28 +92,16 @@ function draw(){
      let mywave = allClients[n];
      //console.log(mywave)
     let localX=0;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     stroke(mywave.colors);
-=======
-    stroke(255)
->>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
-=======
-    stroke(255)
->>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
+
         
         for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
            
             
             /*var volmic = mic.getLevel();
             let amplitude = floor(map(volmic,0,1,0,400));
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
->>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
-=======
->>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
             let amplitudesize = map(volmic,0,1,0,200);*/
           
 
