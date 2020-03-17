@@ -100,7 +100,9 @@ function newConnection(socket){
                 Maxamplitude:0,
                 yvalues : new Array(Math.floor(totalW/xspacing)),
                 amplitud: [0],
-                oldMaxAmp:0
+                oldMaxAmp:0,
+                NewoffsetTop:new Array[100,200,300,400]
+
             }
             allClientsInfo[totalClients]=customer;
 
@@ -114,7 +116,7 @@ function newConnection(socket){
             offsetbeginX:totalW - data.w,
             offsetendX:totalW,
             offsetTop:offsetTop,
-            NewoffsetTop:NewoffsetTop,
+            //NewoffsetTop:NewoffsetTop,
             xspacing:xspacing,
             dx:dx,
             Ndx:Ndx
