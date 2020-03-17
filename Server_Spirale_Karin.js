@@ -23,7 +23,7 @@ var oldMaxAmp=0;
 //variabeln von Sketch
 
 
-var amplitud =[];
+
 
 let xspacing = 10; // Distance between each horizontal location
 
@@ -38,15 +38,14 @@ let Newyvalues =[];
 let yvalues =[]; // Using an array to store height values for the wave
 let dx = (Math.PI*2 / period) * xspacing;// Value for incrementing x
 let Ndx = (Math.PI*2 / Nperiod) * xspacing;// Value for incrementing x
-let yvaluesArr1=[];
-let yvaluesArr2=[];
+
 
 var offsetTop=350;
-var NewoffsetTop=400;
+
 
 let allClientsInfo = []// Array für die verschiednen Clients
 
-/*clientsMaxAmp = [
+/*allClientsInfo = [
     {
         socketid:'',
         maxAmp: 455,
@@ -57,7 +56,13 @@ let allClientsInfo = []// Array für die verschiednen Clients
         maxAmp: 330,
         yvalues: yvaluesArr2
      },
- ]*/
+ ]
+<<<<<<< HEAD
+=======
+
+>>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
+ allClientsInfo[1].maxAmp
+ */
 // socket Angaben
 
 app.get('/', function (req, res) {
@@ -101,7 +106,17 @@ function newConnection(socket){
                 yvalues : new Array(Math.floor(totalW/xspacing)),
                 amplitud: [0],
                 oldMaxAmp:0,
-                NewoffsetTop:new Array[100,200,300,400]
+                NewoffsetTop:totalClients * 100 + 200,
+                offsetbeginX:totalW - data.w,
+                offsetendX:totalW,
+                xspacing:xspacing,
+                dx:dx,
+<<<<<<< HEAD
+                id:totalClients,
+                color:'rgb(random(1,255), 120, 120)' 
+=======
+                id:totalClients
+>>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
 
             }
             allClientsInfo[totalClients]=customer;
@@ -171,15 +186,15 @@ function scale (num, in_min, in_max, out_min, out_max) {
 }
     setInterval(function(){
        
-        for(let n=0;n<totalClients.length;n++){
-            calcWave(allClientsInfo[n].yvalues, allClientsInfo[n].Maxamplitude);
+        for(let n=0;n<allClientsInfo.length;n++){
+            calcWave(n);
         }
         io.sockets.emit('update',allClientsInfo ); //msg geht an alle clients
-    }, 16); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
+    }, 1000); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
 
 
 
-    function calcWave() {
+    function calcWave(n) {
         // Increment theta (try different values for
         // 'angular velocity' here)
         //ursprünglich von sketch
@@ -187,11 +202,11 @@ function scale (num, in_min, in_max, out_min, out_max) {
       
         // For every x value, calculate a y value with sine function
         let x = theta;
-        for (let i = 0; i < yvalues.length; i++) {
-          yvalues[i] = Math.cos(x) * Maxamplitude;
-          x += dx;
+        for (let i = 0; i < allClientsInfo[n].yvalues.length; i++) {
+            allClientsInfo[n].yvalues[i] = Math.cos(x) * allClientsInfo[n].Maxamplitude;
+            x += dx;
       
-      }
+        }
  
 
 
