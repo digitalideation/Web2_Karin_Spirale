@@ -115,9 +115,8 @@ function newConnection(socket){
                 offsetendX:totalW,
                 xspacing:xspacing,
                 dx:dx,
-
                 id:totalClients,
-               color:'rgb(random(1,255), 120, 120)' 
+                color:'rgb(255, 120, 120)' 
 
                 
 
