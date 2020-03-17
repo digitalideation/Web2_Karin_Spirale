@@ -117,7 +117,7 @@ function newConnection(socket){
                 dx:dx,
 
                 id:totalClients,
-                //color:'rgb(random(1,255), 120, 120)' 
+               color:'rgb(random(1,255), 120, 120)' 
 
                 
 
