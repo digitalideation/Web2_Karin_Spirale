@@ -4,6 +4,7 @@ let settings={
 
 };
 
+let allClients=[];
 
 function preload(){
  
@@ -47,13 +48,14 @@ function updateSettings(data){
     //settings.yvalues=data;
     //settings.Newyvalues=data;
     
-   console.log (settings.yvalues);
-    background(0);
-    console.log(data)
-    customer.yvalues[i]=data
+    //console.log (data);
+    allClients=data;
 
-    for (let i= 0; i < totalClients; i++){
-        renderNewWave();
+    background(0);
+
+
+    for (let i= 0; i < allClients.length; i++){
+        renderNewWave(i);
 
    }
     //renderWave();
@@ -70,7 +72,7 @@ function draw(){
             vol:amplitude,
             id:settings.id
         }
-        console.log(settings.id)
+        //console.log(settings.id)
         socket.emit("waveMic",data)
 
     }
@@ -85,20 +87,24 @@ function draw(){
  }
 
     
-    function renderNewWave(){
+    function renderNewWave(n){
+
+     let mywave = allClients[n];
+     //console.log(mywave)
     let localX=0;
+    stroke(255)
         
-        for (let x = floor(settings.offsetbeginX/settings.xspacing); x <= floor(settings.offsetendX/settings.xspacing);  x++) {
+        for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
            
             
-            var volmic = mic.getLevel();
+            /*var volmic = mic.getLevel();
             let amplitude = floor(map(volmic,0,1,0,400));
 
-            let amplitudesize = map(volmic,0,1,0,200);
+            let amplitudesize = map(volmic,0,1,0,200);*/
           
 
-            stroke(amplitudesize,230,amplitudeNsize);
-            rect(localX * settings.xspacing,customer.NewoffsetTop[i]+customer.yvalues[x],amplitudeSsize,10);
+            //stroke(amplitudesize,230,amplitudeNsize);
+            rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,10);
            
 
             localX++;

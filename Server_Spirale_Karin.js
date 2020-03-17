@@ -46,7 +46,7 @@ var NewoffsetTop=400;
 
 let allClientsInfo = []// Array für die verschiednen Clients
 
-/*clientsMaxAmp = [
+/*allClientsInfo = [
     {
         socketid:'',
         maxAmp: 455,
@@ -57,7 +57,10 @@ let allClientsInfo = []// Array für die verschiednen Clients
         maxAmp: 330,
         yvalues: yvaluesArr2
      },
- ]*/
+ ]
+
+ allClientsInfo[1].maxAmp
+ */
 // socket Angaben
 
 app.get('/', function (req, res) {
@@ -101,7 +104,12 @@ function newConnection(socket){
                 yvalues : new Array(Math.floor(totalW/xspacing)),
                 amplitud: [0],
                 oldMaxAmp:0,
-                NewoffsetTop:new Array[100,200,300,400]
+                NewoffsetTop:totalClients * 100 + 200,
+                offsetbeginX:totalW - data.w,
+                offsetendX:totalW,
+                xspacing:xspacing,
+                dx:dx,
+                id:totalClients
 
             }
             allClientsInfo[totalClients]=customer;
@@ -171,15 +179,15 @@ function scale (num, in_min, in_max, out_min, out_max) {
 }
     setInterval(function(){
        
-        for(let n=0;n<totalClients.length;n++){
-            calcWave(allClientsInfo[n].yvalues, allClientsInfo[n].Maxamplitude);
+        for(let n=0;n<allClientsInfo.length;n++){
+            calcWave(n);
         }
         io.sockets.emit('update',allClientsInfo ); //msg geht an alle clients
-    }, 16); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
+    }, 1000); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
 
 
 
-    function calcWave() {
+    function calcWave(n) {
         // Increment theta (try different values for
         // 'angular velocity' here)
         //ursprünglich von sketch
@@ -187,11 +195,11 @@ function scale (num, in_min, in_max, out_min, out_max) {
       
         // For every x value, calculate a y value with sine function
         let x = theta;
-        for (let i = 0; i < yvalues.length; i++) {
-          yvalues[i] = Math.cos(x) * Maxamplitude;
-          x += dx;
+        for (let i = 0; i < allClientsInfo[n].yvalues.length; i++) {
+            allClientsInfo[n].yvalues[i] = Math.cos(x) * allClientsInfo[n].Maxamplitude;
+            x += dx;
       
-      }
+        }
  
 
 
