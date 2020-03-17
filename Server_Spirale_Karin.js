@@ -58,6 +58,10 @@ let allClientsInfo = []// Array für die verschiednen Clients
      },
  ]
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
 =======
 
 >>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
@@ -112,8 +116,12 @@ function newConnection(socket){
                 xspacing:xspacing,
                 dx:dx,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 id:totalClients,
                 color:'rgb(random(1,255), 120, 120)' 
+=======
+                id:totalClients
+>>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
 =======
                 id:totalClients
 >>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
