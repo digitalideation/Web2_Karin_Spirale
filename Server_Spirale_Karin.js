@@ -46,19 +46,19 @@ var NewoffsetTop=400;
 
 let allClientsInfo = []// Array für die verschiednen Clients
 
-// clientsMaxAmp = [
-//     {
-//         socketid:'',
-//         maxAmp: 455,
-//         yvalues: yvaluesArr1
-//     },
-//      {
-//         socketid:'',
-//         maxAmp: 330,
-//         yvalues: yvaluesArr2
-//      },
-//  ]
-//socket Angaben
+clientsMaxAmp = [
+    {
+        socketid:'',
+        maxAmp: 455,
+        yvalues: yvaluesArr1
+    },
+     {
+        socketid:'',
+        maxAmp: 330,
+        yvalues: yvaluesArr2
+     },
+ ]
+// socket Angaben
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, "public", 'index_p5.html'));
@@ -93,6 +93,16 @@ function newConnection(socket){
             yvalues = new Array(Math.floor(totalW/xspacing));
             Newyvalues = new Array(Math.floor(totalW/xspacing));
            
+             // die bis jetzt für alle gültigen Werte Maxamplitude, yvalues etc werden nun zu individuellen Werten pro Client
+            // auch dx könnte ein individueller wert werden, etc.
+            let customer = {
+                socketid: socket.id,
+                Maxamplitude:0,
+                yvalues : new Array(Math.floor(totalW/xspacing)),
+                amplitud: [0],
+                oldMaxAmp:0
+            }
+            allClientsInfo[totalClients]=customer;
 
         }
 
@@ -121,23 +131,25 @@ function newConnection(socket){
         function waveMicMsg (data){
             if(!isNaN(data.vol)){
 
-                amplitud.push(data.vol);
-                Maxamplitude = getMaxOfArray(amplitud);
+                allClientsInfo[data.id].amplitud.push(data.vol);
 
-                if(Maxamplitude < oldMaxAmp){
-                    Maxamplitude=oldMaxAmp*0.5;
+                //amplitud.push(data.vol);
+ 
+                //etc.
+                allClientsInfo[data.id].Maxamplitude = getMaxOfArray(allClientsInfo[data.id].amplitud);
+ 
+                if(allClientsInfo[data.id].Maxamplitude < allClientsInfo[data.id].oldMaxAmp){
+                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.5;
                 }
-
-                oldMaxAmp = Maxamplitude;
-               // console.log(Maxamplitude);
-    
-               // Maxamplitude = scale(max,0,1,0,800); //Amplitud höhe 
+ 
+                allClientsInfo[data.id].oldMaxAmp = allClientsInfo[data.id].Maxamplitude;
+ 
             }
             
 
         //io.socket.emit ("waveMic", max);
-        if(amplitud.length>15){
-            amplitud.splice(0,1);
+        if(allClientsInfo[data.id].amplitud.length>15){
+            allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
 
@@ -152,7 +164,10 @@ function scale (num, in_min, in_max, out_min, out_max) {
   return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
     setInterval(function(){
-        calcWave();
+       
+        for(let n=0;n<totalClients.length;n++){
+            calcWave(allClientsInfo[n].yvalues, allClientsInfo[n].Maxamplitude);
+        }
         io.sockets.emit('update',yvalues, Newyvalues ); //msg geht an alle clients
     }, 16); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
 
@@ -171,13 +186,7 @@ function scale (num, in_min, in_max, out_min, out_max) {
           x += dx;
       
       }
-      // For second wave
-         let n = theta +2;
-        for (let a = 0; a < Newyvalues.length; a++) {
-             Newyvalues[a] = Math.sin(n) * Maxamplitude;
-            n += Ndx;
-    
-    }
+ 
 
 
      
