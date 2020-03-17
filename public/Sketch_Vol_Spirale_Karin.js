@@ -40,29 +40,36 @@ function setup() {
 }
    function getSettings(data){
     settings=data;
+    //console.log(settings)
     
 }
 function updateSettings(data){
-    settings.yvalues=data;
-    settings.Newyvalues=data;
+    //settings.yvalues=data;
+    //settings.Newyvalues=data;
     
     //console.log (settings.yvalues);
     background(0);
-    renderWave();
+    console.log(data)
+    //renderWave();
 }
 
 
 
 function draw(){
 
-    //if(frameCount%20==0){
+    if(settings.id!=undefined){
         var volmic = mic.getLevel();
         let amplitude = floor(map(volmic,0,1,0,400));
         var data={
             vol:amplitude,
             id:settings.id
         }
+        console.log(settings.id)
         socket.emit("waveMic",data)
+
+    }
+    //if(frameCount%20==0){
+
         //console.log("ich sende"+data.vol)
     //}
     

@@ -46,7 +46,7 @@ var NewoffsetTop=400;
 
 let allClientsInfo = []// Array für die verschiednen Clients
 
-clientsMaxAmp = [
+/*clientsMaxAmp = [
     {
         socketid:'',
         maxAmp: 455,
@@ -57,7 +57,7 @@ clientsMaxAmp = [
         maxAmp: 330,
         yvalues: yvaluesArr2
      },
- ]
+ ]*/
 // socket Angaben
 
 app.get('/', function (req, res) {
@@ -89,7 +89,7 @@ function newConnection(socket){
         if(!socketIds.includes(socket.id)) {
             socketIds.push(socket.id);
             totalW+=data.w;
-            totalClients++; //zählen der Clients
+
             yvalues = new Array(Math.floor(totalW/xspacing));
             Newyvalues = new Array(Math.floor(totalW/xspacing));
            
@@ -103,6 +103,7 @@ function newConnection(socket){
                 oldMaxAmp:0
             }
             allClientsInfo[totalClients]=customer;
+
 
         }
 
@@ -122,6 +123,7 @@ function newConnection(socket){
 
         }
 
+         totalClients++; //zählen der Clients
 
         io.to(socket.id).emit('get', settings);//msg geht an client der gesendet hat
 
@@ -129,6 +131,8 @@ function newConnection(socket){
         socket.on("waveMic",waveMicMsg);
 
         function waveMicMsg (data){
+            //console.log("mein Schluessel"+data.id)
+            //console.log(allClientsInfo[data.id]);
             if(!isNaN(data.vol)){
 
                 allClientsInfo[data.id].amplitud.push(data.vol);
@@ -168,7 +172,7 @@ function scale (num, in_min, in_max, out_min, out_max) {
         for(let n=0;n<totalClients.length;n++){
             calcWave(allClientsInfo[n].yvalues, allClientsInfo[n].Maxamplitude);
         }
-        io.sockets.emit('update',yvalues, Newyvalues ); //msg geht an alle clients
+        io.sockets.emit('update',allClientsInfo ); //msg geht an alle clients
     }, 16); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
 
 
