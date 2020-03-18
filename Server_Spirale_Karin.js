@@ -148,7 +148,7 @@ function newConnection(socket){
 
         function waveMicMsg (data){
             //console.log("mein Schluessel"+ data.id)
-            //console.log(allClientsInfo[data.id]);
+            console.log(allClientsInfo[data.id]);
             if(!isNaN(data.vol)){
 
                 allClientsInfo[data.id].amplitud.push(data.vol);
