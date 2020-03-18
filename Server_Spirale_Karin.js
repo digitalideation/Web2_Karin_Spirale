@@ -105,15 +105,13 @@ function newConnection(socket){
                 amplitud: [0],
                 oldMaxAmp:0,
                 //NewoffsetTop:totalClients * 10 + 200,
-                NewoffsetTop: (totalClients+90)+(Math.random()* 700),
+                NewoffsetTop: totalClients+(Math.random()* 700),
                 offsetbeginX:totalW - data.w,
                 offsetendX:totalW,
                 xspacing:xspacing+(Math.random()* 19),
                 dx:dx + (Math.random()* 9),
                 r:5+(Math.random()* 20),
-                //color:"rgb( + random(0,255),  + random(0,255),  + random(0,255))"
-                // color:"rgb (200,200,20)"
-                //color:'#'+Math.floor(Math.random()*16777215).toString(16),
+                 //color:'#'+Math.floor(Math.random()*16777215).toString(16),
                 colr:Math.floor(Math.random()* 255),
                 colg:Math.floor(Math.random()* 255),
                 colb:Math.floor((Math.random() * 90) + 155)
@@ -168,7 +166,7 @@ function newConnection(socket){
             
 
         //io.socket.emit ("waveMic", max);
-        if(allClientsInfo[data.id].amplitud.length>5){
+        if(allClientsInfo[data.id].amplitud.length>15){
             allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
