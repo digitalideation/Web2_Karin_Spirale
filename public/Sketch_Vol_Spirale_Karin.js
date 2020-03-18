@@ -19,10 +19,10 @@ function preload(){
 function setup() {
     
     createCanvas(windowWidth, windowHeight);
-    frameRate(40);
-    //socket=io.connect("http://localhost:3000/");
-    socket=io.connect();
-    colorMode(HSB,width,height,100);
+    //frameRate(40);
+  // socket=io.connect("http://localhost:3000/");
+   socket=io.connect();
+  
     amp =new p5.Amplitude();
     mic= new p5.AudioIn();
     mic.start();
@@ -45,10 +45,9 @@ function setup() {
     
 }
 function updateSettings(data){
-    //settings.yvalues=data;
-    //settings.Newyvalues=data;
     
-    //console.log (data);
+    
+    console.log (data);
     allClients=data;
 
     background(0);
@@ -58,7 +57,7 @@ function updateSettings(data){
         renderNewWave(i);
 
    }
-    //renderWave();
+  
 }
 
 
@@ -92,21 +91,15 @@ function draw(){
      let mywave = allClients[n];
      //console.log(mywave)
     let localX=0;
-
-    stroke(mywave.color);
+        noFill();
+        stroke(mywave.colr,mywave.colg,mywave.colb,200);
 
         
         for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
            
             
-            /*var volmic = mic.getLevel();
-            let amplitude = floor(map(volmic,0,1,0,400));
-
-            let amplitudesize = map(volmic,0,1,0,200);*/
-          
-
-            //stroke(amplitudesize,230,amplitudeNsize);
-            rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,10);
+            
+            rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,mywave.r);
            
 
             localX++;

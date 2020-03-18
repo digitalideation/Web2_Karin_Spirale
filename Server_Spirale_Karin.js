@@ -18,9 +18,9 @@ var socketIds=[];
 let totalW=0;
 var totalClients=0;
 
-var oldMaxAmp=0;
 
-//variabeln von Sketch
+
+// variabeln von Sketch
 
 
 
@@ -30,22 +30,22 @@ let xspacing = 10; // Distance between each horizontal location
 
 
 let theta = 0.0; // Start angle at 0
-let Maxamplitude = 0; // Height of wave
+
 let period = 600.0; // How many pixels before the wave repeats
 let Nperiod = 50.0; // How many pixels before the wave repeats
 
-let Newyvalues =[];
+
 let yvalues =[]; // Using an array to store height values for the wave
 let dx = (Math.PI*2 / period) * xspacing;// Value for incrementing x
-let Ndx = (Math.PI*2 / Nperiod) * xspacing;// Value for incrementing x
 
 
-var offsetTop=350;
+
+
 
 
 let allClientsInfo = []// Array für die verschiednen Clients
 
-/*allClientsInfo = [
+/* Beispiel wie das Array aussehen kann allClientsInfo = [
     {
         socketid:'',
         maxAmp: 455,
@@ -57,14 +57,7 @@ let allClientsInfo = []// Array für die verschiednen Clients
         yvalues: yvaluesArr2
      },
  ]
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
-=======
-
->>>>>>> e3f5124108596c900bc4e06f1657e220bf4f954e
  allClientsInfo[1].maxAmp
  */
 // socket Angaben
@@ -100,25 +93,30 @@ function newConnection(socket){
             totalW+=data.w;
 
             yvalues = new Array(Math.floor(totalW/xspacing));
-            Newyvalues = new Array(Math.floor(totalW/xspacing));
+           
            
              // die bis jetzt für alle gültigen Werte Maxamplitude, yvalues etc werden nun zu individuellen Werten pro Client
             // auch dx könnte ein individueller wert werden, etc.
             let customer = {
                 socketid: socket.id,
+                id:totalClients,
                 Maxamplitude:0,
                 yvalues : new Array(Math.floor(totalW/xspacing)),
                 amplitud: [0],
                 oldMaxAmp:0,
-                NewoffsetTop:totalClients * 100 + 200,
+                //NewoffsetTop:totalClients * 10 + 200,
+                NewoffsetTop: (totalClients+80)+(Math.random()* 900),
                 offsetbeginX:totalW - data.w,
                 offsetendX:totalW,
-                xspacing:xspacing,
-                dx:dx,
-                id:totalClients,
-                color:'rgb(255, 120, 120)' 
-
-                
+                xspacing:xspacing+(Math.random()* 30),
+                dx:dx + (Math.random()* 10),
+                r:5+(Math.random()* 20),
+                //color:"rgb( + random(0,255),  + random(0,255),  + random(0,255))"
+                // color:"rgb (200,200,20)"
+                //color:'#'+Math.floor(Math.random()*16777215).toString(16),
+                colr:Math.floor(Math.random()* 255),
+                colg:Math.floor(Math.random()* 255),
+                colb:Math.floor((Math.random() * 90) + 155)
 
 
             }
@@ -133,11 +131,9 @@ function newConnection(socket){
             socketid:socket.id,
             offsetbeginX:totalW - data.w,
             offsetendX:totalW,
-            offsetTop:offsetTop,
-            //NewoffsetTop:NewoffsetTop,
             xspacing:xspacing,
             dx:dx,
-            Ndx:Ndx
+          
            
 
 
@@ -151,19 +147,19 @@ function newConnection(socket){
         socket.on("waveMic",waveMicMsg);
 
         function waveMicMsg (data){
-            //console.log("mein Schluessel"+data.id)
+            //console.log("mein Schluessel"+ data.id)
             //console.log(allClientsInfo[data.id]);
             if(!isNaN(data.vol)){
 
                 allClientsInfo[data.id].amplitud.push(data.vol);
 
-                //amplitud.push(data.vol);
+               
  
                 //etc.
                 allClientsInfo[data.id].Maxamplitude = getMaxOfArray(allClientsInfo[data.id].amplitud);
  
                 if(allClientsInfo[data.id].Maxamplitude < allClientsInfo[data.id].oldMaxAmp){
-                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.5;
+                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.9;
                 }
  
                 allClientsInfo[data.id].oldMaxAmp = allClientsInfo[data.id].Maxamplitude;
@@ -172,7 +168,7 @@ function newConnection(socket){
             
 
         //io.socket.emit ("waveMic", max);
-        if(allClientsInfo[data.id].amplitud.length>15){
+        if(allClientsInfo[data.id].amplitud.length>19){
             allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
