@@ -67,7 +67,7 @@ app.get('/', function (req, res) {
 });
 app.use(express.static(path.join(__dirname, "public")));
 
-//console.log("my server is running");
+console.log("my server is running");
 
 var io = socket(server);
 io.sockets.on('connection', newConnection);
