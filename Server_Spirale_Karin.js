@@ -109,7 +109,7 @@ function newConnection(socket){
                 offsetbeginX:totalW - data.w,
                 offsetendX:totalW,
                 xspacing:xspacing+(Math.random()* 30),
-                dx:dx + (Math.random()* 10),
+                dx:dx + (Math.random()* 9),
                 r:5+(Math.random()* 20),
                 //color:"rgb( + random(0,255),  + random(0,255),  + random(0,255))"
                 // color:"rgb (200,200,20)"
