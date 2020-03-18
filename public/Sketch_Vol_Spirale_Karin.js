@@ -20,7 +20,7 @@ function setup() {
     
     createCanvas(windowWidth, windowHeight);
     //frameRate(40);
-  // socket=io.connect("http://localhost:3000/");
+   //socket=io.connect("http://localhost:3000/");
    socket=io.connect();
   
     amp =new p5.Amplitude();

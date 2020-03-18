@@ -32,7 +32,7 @@ let xspacing = 10; // Distance between each horizontal location
 let theta = 0.0; // Start angle at 0
 
 let period = 600.0; // How many pixels before the wave repeats
-let Nperiod = 50.0; // How many pixels before the wave repeats
+
 
 
 let yvalues =[]; // Using an array to store height values for the wave
@@ -105,10 +105,10 @@ function newConnection(socket){
                 amplitud: [0],
                 oldMaxAmp:0,
                 //NewoffsetTop:totalClients * 10 + 200,
-                NewoffsetTop: (totalClients+80)+(Math.random()* 800),
+                NewoffsetTop: (totalClients+90)+(Math.random()* 700),
                 offsetbeginX:totalW - data.w,
                 offsetendX:totalW,
-                xspacing:xspacing+(Math.random()* 29),
+                xspacing:xspacing+(Math.random()* 19),
                 dx:dx + (Math.random()* 9),
                 r:5+(Math.random()* 20),
                 //color:"rgb( + random(0,255),  + random(0,255),  + random(0,255))"
