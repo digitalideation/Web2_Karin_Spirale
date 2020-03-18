@@ -105,7 +105,7 @@ function newConnection(socket){
                 amplitud: [0],
                 oldMaxAmp:0,
                 //NewoffsetTop:totalClients * 10 + 200,
-                NewoffsetTop: (totalClients+80)+(Math.random()* 900),
+                NewoffsetTop: (totalClients+80)+(Math.random()* 800),
                 offsetbeginX:totalW - data.w,
                 offsetendX:totalW,
                 xspacing:xspacing+(Math.random()* 29),
