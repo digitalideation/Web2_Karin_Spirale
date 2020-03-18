@@ -66,8 +66,8 @@ function draw(){
 
     if(settings.id!=undefined){
         var volmic = mic.getLevel();
-        let amplitudZ = floor(map(volmic,0,1,0,400));
-        let amplitude = floor(map(amplitudZ,0,1,0,400));
+        //let amplitudZ = floor(map(volmic,0,1,0,400));
+        let amplitude = floor(map(volmic,0,1,0,400));
         var data={
             vol:amplitude,
             id:settings.id
