@@ -105,7 +105,7 @@ function newConnection(socket){
                 amplitud: [0],
                 oldMaxAmp:0,
                 //NewoffsetTop:totalClients * 10 + 200,
-                NewoffsetTop: (totalClients+90)+(Math.random()* 700),
+                NewoffsetTop: (totalClients+100)+(Math.random()* 700),
                 offsetbeginX:totalW - data.w,
                 offsetendX:totalW,
                 xspacing:xspacing+(Math.random()* 20),
@@ -166,7 +166,7 @@ function newConnection(socket){
             
 
         //io.socket.emit ("waveMic", max);
-        if(allClientsInfo[data.id].amplitud.length>20){
+        if(allClientsInfo[data.id].amplitud.length>18){
             allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
