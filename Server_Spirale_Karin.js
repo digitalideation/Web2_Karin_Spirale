@@ -7,8 +7,8 @@ var app= express();
 var socket = require('socket.io');
 var path = require('path');
 
-//var server = app.listen(3000);
-var server = app.listen(process.env.PORT || 80);
+var server = app.listen(3000);
+//var server = app.listen(process.env.PORT || 80);
 
 
 var socketIds=[];
@@ -102,14 +102,20 @@ function newConnection(socket){
                 offsetbeginX:totalW - data.w,
                 offsetendX:totalW,
                 xspacing:xspacing+(Math.random()* 20),
+                //xspacing:xspacing,
                 dx:dx + (Math.random()* 9),
-                r:5+(Math.random()* 20),
-                 //color:'#'+Math.floor(Math.random()*16777215).toString(16),
-                //colr:Math.floor(Math.random()* 255),
-                colr:Math.floor(Math.random()* 100),
+                //r:5+(Math.random()* 20),
                 colg:Math.floor(Math.random()* 255),
-                colb:Math.floor((Math.random() * 90) + 155),
+                //colr:Math.floor(Math.random()* 100),
+                //colg:Math.floor(Math.random()* 255),
+                //colb:Math.floor((Math.random() * 90) + 155),
+             
                 theta:0
+
+
+
+
+
 
 
             }
@@ -152,7 +158,7 @@ function newConnection(socket){
                 allClientsInfo[data.id].Maxamplitude = getMaxOfArray(allClientsInfo[data.id].amplitud);
  
                 if(allClientsInfo[data.id].Maxamplitude < allClientsInfo[data.id].oldMaxAmp){
-                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.9;
+                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.7;
                 }
  
                 allClientsInfo[data.id].oldMaxAmp = allClientsInfo[data.id].Maxamplitude;
@@ -182,8 +188,8 @@ function scale (num, in_min, in_max, out_min, out_max) {
             calcWave(n);
         }
         io.sockets.emit('update',allClientsInfo ); //msg geht an alle clients
-    }, 500); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
-
+    }, 16); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
+        //1000,500 anstatt 16
 
 
     function calcWave(n) {

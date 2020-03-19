@@ -21,7 +21,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     //frameRate(40);
    //socket=io.connect("http://localhost:3000/");
-   socket=io.connect();
+    socket=io.connect();
   
     amp =new p5.Amplitude();
     mic= new p5.AudioIn();
@@ -91,16 +91,16 @@ function draw(){
 
      let mywave = allClients[n];
      //console.log(mywave)
-    let localX=0;
+        let localX=0;
         noFill();
-        stroke(mywave.colr,mywave.colg,mywave.colb,200);
-
-        
+        //stroke(mywave.colr,mywave.colg,mywave.colb,200);
+        stroke((mywave.Maxamplitude*15),mywave.colg,(mywave.Maxamplitude+100));
+        //myxspacing= xspacing+ Maxamplitude;
+        // for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
         for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
-           
-            
-            
-            rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,mywave.r);
+          
+            //rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,mywave.r);
+            rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,2+mywave.Maxamplitude*0.5);
            
 
             localX++;
