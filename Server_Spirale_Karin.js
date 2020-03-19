@@ -26,14 +26,7 @@ var totalClients=0;
 
 
 let xspacing = 10; // Distance between each horizontal location
-
-
-
-let theta = 0.0; // Start angle at 0
-
 let period = 600.0; // How many pixels before the wave repeats
-
-
 
 let yvalues =[]; // Using an array to store height values for the wave
 let dx = (Math.PI*2 / period) * xspacing;// Value for incrementing x
@@ -112,9 +105,11 @@ function newConnection(socket){
                 dx:dx + (Math.random()* 9),
                 r:5+(Math.random()* 20),
                  //color:'#'+Math.floor(Math.random()*16777215).toString(16),
-                colr:Math.floor(Math.random()* 255),
+                //colr:Math.floor(Math.random()* 255),
+                colr:Math.floor(Math.random()* 100),
                 colg:Math.floor(Math.random()* 255),
-                colb:Math.floor((Math.random() * 90) + 155)
+                colb:Math.floor((Math.random() * 90) + 155),
+                theta:0
 
 
             }
@@ -187,7 +182,7 @@ function scale (num, in_min, in_max, out_min, out_max) {
             calcWave(n);
         }
         io.sockets.emit('update',allClientsInfo ); //msg geht an alle clients
-    }, 1000); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
+    }, 500); // 1000 ms / 60 -> 16.6666  entspricht ca dem timing in p5.js das 60mal pro sekunde draw aufruft
 
 
 
@@ -195,17 +190,17 @@ function scale (num, in_min, in_max, out_min, out_max) {
         // Increment theta (try different values for
         // 'angular velocity' here)
         //ursprünglich von sketch
-        theta += 0.01;
+        allClientsInfo[n].theta += 0.01;
       
         // For every x value, calculate a y value with sine function
-        let x = theta;
+        let x = allClientsInfo[n].theta;
         for (let i = 0; i < allClientsInfo[n].yvalues.length; i++) {
             allClientsInfo[n].yvalues[i] = Math.cos(x) * allClientsInfo[n].Maxamplitude;
             x += dx;
       
         }
  
-
+      
 
      
       //console.log(Maxamplitude);
