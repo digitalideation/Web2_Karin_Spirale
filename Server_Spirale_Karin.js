@@ -7,8 +7,8 @@ var app= express();
 var socket = require('socket.io');
 var path = require('path');
 
-//var server = app.listen(3000);
-var server = app.listen(process.env.PORT || 80);
+var server = app.listen(3000);
+//var server = app.listen(process.env.PORT || 80);
 
 
 var socketIds=[];
@@ -21,7 +21,7 @@ var totalClients=0;
 
 
 // variabeln von Sketch
-
+//var audioContext = new AudioContext();
 
 
 
@@ -81,6 +81,7 @@ function newConnection(socket){
 
         function startMsg(data){
 
+
         if(!socketIds.includes(socket.id)) {
             socketIds.push(socket.id);
             totalW+=data.w;
@@ -103,13 +104,13 @@ function newConnection(socket){
                 offsetendX:totalW,
                 xspacing:xspacing+(Math.random()* 20),
                 //xspacing:xspacing,
-                dx:dx + (Math.random()* 9),
+                //dx:dx + (Math.random()* 9),
+                dx:dx,
                 //r:5+(Math.random()* 20),
                 colg:Math.floor(Math.random()* 255),
                 //colr:Math.floor(Math.random()* 100),
-                //colg:Math.floor(Math.random()* 255),
-                //colb:Math.floor((Math.random() * 90) + 155),
-             
+                colb:Math.floor((Math.random() * 90) + 205),
+                //colb:Math.floor(Math.random() * 100),
                 theta:0
 
 
@@ -147,7 +148,7 @@ function newConnection(socket){
 
         function waveMicMsg (data){
             //console.log("mein Schluessel"+ data.id)
-            //console.log(allClientsInfo[data.id]);
+           // console.log(allClientsInfo[data.id]);
             if(!isNaN(data.vol)){
 
                 allClientsInfo[data.id].amplitud.push(data.vol);
@@ -158,7 +159,7 @@ function newConnection(socket){
                 allClientsInfo[data.id].Maxamplitude = getMaxOfArray(allClientsInfo[data.id].amplitud);
  
                 if(allClientsInfo[data.id].Maxamplitude < allClientsInfo[data.id].oldMaxAmp){
-                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.7;
+                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.8;
                 }
  
                 allClientsInfo[data.id].oldMaxAmp = allClientsInfo[data.id].Maxamplitude;
@@ -167,7 +168,7 @@ function newConnection(socket){
             
 
         //io.socket.emit ("waveMic", max);
-        if(allClientsInfo[data.id].amplitud.length>19){
+        if(allClientsInfo[data.id].amplitud.length>17){
             allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
@@ -202,8 +203,10 @@ function scale (num, in_min, in_max, out_min, out_max) {
         let x = allClientsInfo[n].theta;
         for (let i = 0; i < allClientsInfo[n].yvalues.length; i++) {
             allClientsInfo[n].yvalues[i] = Math.cos(x) * allClientsInfo[n].Maxamplitude;
+            //x += (dx *allClientsInfo[n].Maxamplitude);
             x += dx;
-      
+            
+
         }
  
       
