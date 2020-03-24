@@ -6,7 +6,8 @@ let settings={
 
 let allClients=[];
 
-let mic;
+
+var listen = 0;
 
 
 
@@ -20,12 +21,15 @@ function preload(){
 $(function() {
     $("#start").on("click", function(e) {
       e.preventDefault();
-     // mic.start();
-      startMicrophoneInput();
+     mic.start();
+      //startMicrophoneInput();
       });
   });
 
-
+  
+  
+  
+ 
 
 
 function setup() {
@@ -75,9 +79,16 @@ function updateSettings(data){
 
 
 function draw(){
+    function draw(){
+        if(listen==1){
+            console.log(meter.volume);
+        }
+    }
 
     if(settings.id!=undefined){
-        var volmic = mic.getLevel();
+
+        var volmic = meter.volume;
+        //var volmic = mic.getLevel();
        let amplitudZ = floor(map(volmic,0,1,0,400));
         //let amplitude = floor(map(amplitudZ,0,100,0,300));
         let amplitude = floor(map(amplitudZ,0,90,0,400));
@@ -89,10 +100,10 @@ function draw(){
         socket.emit("waveMic",data)
 
     }
-    //if(frameCount%20==0){
+    
 
         //console.log("ich sende"+data.vol)
-    //}
+  
     
    
  
