@@ -6,6 +6,7 @@ let settings={
 
 let allClients=[];
 
+let mic;
 
 
 
@@ -23,7 +24,7 @@ $(function() {
     });
   });
 
-  
+
 
 
 function setup() {

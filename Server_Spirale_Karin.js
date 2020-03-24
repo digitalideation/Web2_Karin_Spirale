@@ -143,16 +143,7 @@ function newConnection(socket){
 
         io.to(socket.id).emit('get', settings);//msg geht an client der gesendet hat
     
-    }else{ function clearCanvas(canvas) {
-        const ctx = canvas.getContext('2d');
-        ctx.save();
-        ctx.globalCompositeOperation = 'copy';
-        ctx.strokeStyle = 'transparent';
-        ctx.beginPath();
-        ctx.lineTo(0, 0);
-        ctx.stroke();
-        ctx.restore();
-      }
+    
     }//ende startMsg
         socket.on("waveMic",waveMicMsg);
 
