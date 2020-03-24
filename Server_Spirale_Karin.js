@@ -68,12 +68,6 @@ io.sockets.on('connection', newConnection);
 let settings={
 
 }
-$(function() {
-    $(“#start”).on(“click”, function(e) {
-      e.preventDefault();
-      mic.start();
-    });
-  });
 
 
 
