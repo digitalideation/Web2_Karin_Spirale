@@ -6,14 +6,24 @@ let settings={
 
 let allClients=[];
 
+
+
+
 function preload(){
  
    
     mic= new p5.AudioIn();
-    mic.start();
+   // mic.start();
 }
 
+$(function() {
+    $("#start").on("click", function(e) {
+      e.preventDefault();
+      mic.start();
+    });
+  });
 
+  
 
 
 function setup() {
@@ -25,7 +35,7 @@ function setup() {
   
     amp =new p5.Amplitude();
     mic= new p5.AudioIn();
-    mic.start();
+    //mic.start();
   
     settings.w=width; //übermittele dem server die Devicebreite
     
