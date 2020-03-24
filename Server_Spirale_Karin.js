@@ -34,7 +34,7 @@ let dx = (Math.PI*2 / period) * xspacing;// Value for incrementing x
 
 
 
-
+//var startBtn  = document.getElementById('startBtn')
 
 let allClientsInfo = []// Array für die verschiednen Clients
 
@@ -69,8 +69,15 @@ let settings={
 
 }
 
-
-
+var hidden = false;
+function action() {
+    hidden = !hidden;
+    if(hidden) {
+        document.getElementById('togglee').style.visibility = 'hidden';
+    } else {
+        document.getElementById('togglee').style.visibility = 'visible';
+    }
+}
 
 function newConnection(socket){
     //console.log("new connection");
