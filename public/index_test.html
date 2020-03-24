@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>socket</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+	
+	<script src="libraries/p5.js"></script>
+	<script src="File_Dariush_mic.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+	<!--<script src="libraries/p5.dom.js"></script>-->
+	<script   src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
+
+
+
+	<script src="sketch.js"></script>
+    
+    
+
+
+	
+
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			overflow: hidden;
+			font-family:"Helvetica";
+			line-height:140%;
+		}
+		canvas {
+			margin:auto;
+		}
+button{
+	display: flex;
+        position: fixed;
+        top:1rem;
+		left:1rem;
+        font-family: inherit;
+        font-size: 1rem;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        border:0;
+        border-radius: 0.25rem;
+		color:silver;
+        background-color: black;
+        box-shadow: 2px 2px 2px rgb(53, 50, 50);
+        
+
+}
+	</style>
+</head>
+<body>
+	<button  class="button"type="button" id="start">start</button>
+
+
+
+</body>
+<script>
+
+
+
+    $(function() {
+        $("#start").on("click", function(e) {
+            e.preventDefault();
+            startMicrophoneInput();
+
+        });
+    });
+</script>
+
+</html>
