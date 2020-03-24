@@ -68,16 +68,14 @@ io.sockets.on('connection', newConnection);
 let settings={
 
 }
+$(function() {
+    $(“#start”).on(“click”, function(e) {
+      e.preventDefault();
+      mic.start();
+    });
+  });
 
-var hidden = false;
-function action() {
-    hidden = !hidden;
-    if(hidden) {
-        document.getElementById('togglee').style.visibility = 'hidden';
-    } else {
-        document.getElementById('togglee').style.visibility = 'visible';
-    }
-}
+
 
 function newConnection(socket){
     //console.log("new connection");
