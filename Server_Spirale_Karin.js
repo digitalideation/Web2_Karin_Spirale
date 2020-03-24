@@ -80,7 +80,7 @@ function newConnection(socket){
 
 
         function startMsg(data){
-            if (totalClients<6) {
+            if (totalClients<7) {
 
 
         if(!socketIds.includes(socket.id)) {
