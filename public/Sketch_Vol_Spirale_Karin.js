@@ -39,8 +39,8 @@ function setup() {
  //socket=io.connect("http://localhost:3000/");
      socket=io.connect();
   
-    amp =new p5.Amplitude();
-    mic= new p5.AudioIn();
+   // amp =new p5.Amplitude();
+   // mic= new p5.AudioIn();
     //mic.start();
   
     settings.w=width; //übermittele dem server die Devicebreite
