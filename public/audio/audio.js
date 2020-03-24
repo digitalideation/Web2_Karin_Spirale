@@ -20,6 +20,11 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
+
+ Original from: https://github.com/cwilso/volume-meter/blob/master/volume-meter.js
+
+
+ changed hzuellig 202-03-24
  */
 
 var audioContext = null;
