@@ -150,8 +150,8 @@ function newConnection(socket){
         
 
         function waveMicMsg (data){
-            //console.log("mein Schluessel"+ data.id)
-            console.log(allClientsInfo[data.id]);
+            console.log("mein Schluessel"+ data.id)
+            //console.log(allClientsInfo[data.id]);
 
           
 
@@ -218,7 +218,7 @@ function scale (num, in_min, in_max, out_min, out_max) {
       
 
      
-    console.log(Maxamplitude);
+    //console.log(Maxamplitude);
 
       //console.log(yvalues);
     
