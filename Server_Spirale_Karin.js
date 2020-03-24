@@ -218,7 +218,7 @@ function scale (num, in_min, in_max, out_min, out_max) {
       
 
      
-      //console.log(Maxamplitude);
+    console.log(Maxamplitude);
 
       //console.log(yvalues);
     
