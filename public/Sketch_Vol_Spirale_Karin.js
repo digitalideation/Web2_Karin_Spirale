@@ -81,7 +81,7 @@ function updateSettings(data){
 function draw(){
     function draw(){
         if(listen==1){
-            console.log(meter.volume);
+           // console.log(meter.volume);
         }
     }
 
@@ -92,9 +92,9 @@ function draw(){
        // let amplitudZ = floor(map(meter.volume,0,1,0,400));
        //let amplitudZ = floor(map(meter.volume,-0.0003,1,0,100));
         //let amplitude = floor(map(amplitudZ,0,100,0,300));
-        let amplitude = floor(map(meter.volume,0,100,0,400));
+        let amplitude = floor (10*(map(meter.volume,0,1,0,400)));
         var data={
-            vol:amplitude*20,
+            vol:amplitude,
             id:settings.id
         }
         //console.log(settings.id)
