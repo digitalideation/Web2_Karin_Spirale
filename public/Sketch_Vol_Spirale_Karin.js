@@ -47,7 +47,7 @@ function setup() {
 function updateSettings(data){
     
     
-    console.log (data);
+    //console.log (data);
     allClients=data;
 
     background(0);
