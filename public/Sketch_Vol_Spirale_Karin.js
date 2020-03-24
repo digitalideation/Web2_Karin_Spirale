@@ -87,13 +87,13 @@ function draw(){
     }
 
     if(settings.id!=undefined){
-        var  meter;
+       
         var volmic = meter.volume;
         //var volmic = mic.getLevel();
        // let amplitudZ = floor(map(meter.volume,0,1,0,400));
        //let amplitudZ = floor(map(meter.volume,-0.0003,1,0,100));
         //let amplitude = floor(map(amplitudZ,0,100,0,300));
-        let amplitude = floor (map(volmic,-0.0003,1,0,100));
+        let amplitude = floor (map(volmic,-0.0001,1,0,100));
         var data={
             vol:amplitude,
             id:settings.id
