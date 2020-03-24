@@ -139,7 +139,7 @@ function newConnection(socket){
 
          totalClients++; //zählen der Clients
 
-        io.to(socket.id).emit('get', settings);//msg geht an client der gesendet hat
+         io.to(socket.id).emit('get', settings);//msg geht an client der gesendet hat
 
     }//ende startMsg
         socket.on("waveMic",waveMicMsg);
