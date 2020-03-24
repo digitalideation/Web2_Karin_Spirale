@@ -7,8 +7,8 @@ var app= express();
 var socket = require('socket.io');
 var path = require('path');
 
-//var server = app.listen(3000);
-var server = app.listen(process.env.PORT || 80);
+var server = app.listen(3000);
+//var server = app.listen(process.env.PORT || 80);
 
 
 var socketIds=[];
@@ -80,6 +80,7 @@ function newConnection(socket){
 
 
         function startMsg(data){
+            if (totalClients<6) {
 
 
         if(!socketIds.includes(socket.id)) {
@@ -142,13 +143,28 @@ function newConnection(socket){
          totalClients++; //zählen der Clients
 
         io.to(socket.id).emit('get', settings);//msg geht an client der gesendet hat
-
+    
+    }else{ function clearCanvas(canvas) {
+        const ctx = canvas.getContext('2d');
+        ctx.save();
+        ctx.globalCompositeOperation = 'copy';
+        ctx.strokeStyle = 'transparent';
+        ctx.beginPath();
+        ctx.lineTo(0, 0);
+        ctx.stroke();
+        ctx.restore();
+      }
     }//ende startMsg
         socket.on("waveMic",waveMicMsg);
+
+        
 
         function waveMicMsg (data){
             //console.log("mein Schluessel"+ data.id)
            // console.log(allClientsInfo[data.id]);
+
+          
+
             if(!isNaN(data.vol)){
 
                 allClientsInfo[data.id].amplitud.push(data.vol);
@@ -208,11 +224,15 @@ function scale (num, in_min, in_max, out_min, out_max) {
             
 
         }
- 
+    }
       
 
      
       //console.log(Maxamplitude);
 
       //console.log(yvalues);
+    
+
+
       }
+    
