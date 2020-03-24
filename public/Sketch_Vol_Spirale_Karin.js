@@ -57,7 +57,7 @@ function setup() {
 }
    function getSettings(data){
     settings=data;
-    console.log(settings)
+    //console.log(settings)
     
 }
 function updateSettings(data){
@@ -89,9 +89,9 @@ function draw(){
 
         //var volmic = meter.volume;
         //var volmic = mic.getLevel();
-       let amplitudZ = floor(map(meter.volume,0,1,0,400));
+       let amplitudZ = floor(map(meter.volume,-3,10,0,400));
         //let amplitude = floor(map(amplitudZ,0,100,0,300));
-        let amplitude = floor(map(amplitudZ,0,90,0,400));
+        let amplitude = floor(map(amplitudZ,0,100,0,400));
         var data={
             vol:amplitude,
             id:settings.id
@@ -102,7 +102,7 @@ function draw(){
     }
     
 
-        //console.log("ich sende"+data.vol)
+        console.log("ich sende"+data.vol)
   
     
    
