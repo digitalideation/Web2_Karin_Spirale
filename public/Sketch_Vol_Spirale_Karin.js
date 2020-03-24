@@ -39,8 +39,8 @@ function setup() {
  //socket=io.connect("http://localhost:3000/");
      socket=io.connect();
   
-    amp =new p5.Amplitude();
-   mic= new p5.AudioIn();
+    //amp =new p5.Amplitude();
+   //mic= new p5.AudioIn();
     //mic.start();
   
     settings.w=width; //übermittele dem server die Devicebreite
@@ -57,7 +57,7 @@ function setup() {
 }
    function getSettings(data){
     settings=data;
-    //console.log(settings)
+    console.log(settings)
     
 }
 function updateSettings(data){
@@ -87,9 +87,9 @@ function draw(){
 
     if(settings.id!=undefined){
 
-        var volmic = meter.volume;
+        //var volmic = meter.volume;
         //var volmic = mic.getLevel();
-       let amplitudZ = floor(map(volmic,0,1,0,400));
+       let amplitudZ = floor(map(meter.volume,0,1,0,400));
         //let amplitude = floor(map(amplitudZ,0,100,0,300));
         let amplitude = floor(map(amplitudZ,0,90,0,400));
         var data={
