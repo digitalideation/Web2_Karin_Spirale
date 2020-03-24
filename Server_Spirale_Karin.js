@@ -34,7 +34,7 @@ let dx = (Math.PI*2 / period) * xspacing;// Value for incrementing x
 
 
 
-
+//var startBtn  = document.getElementById('startBtn')
 
 let allClientsInfo = []// Array für die verschiednen Clients
 
@@ -69,8 +69,15 @@ let settings={
 
 }
 
-
-
+var hidden = false;
+function action() {
+    hidden = !hidden;
+    if(hidden) {
+        document.getElementById('togglee').style.visibility = 'hidden';
+    } else {
+        document.getElementById('togglee').style.visibility = 'visible';
+    }
+}
 
 function newConnection(socket){
     //console.log("new connection");
@@ -80,7 +87,7 @@ function newConnection(socket){
 
 
         function startMsg(data){
-            if (totalClients<6) {
+            if (totalClients<7) {
 
 
         if(!socketIds.includes(socket.id)) {
@@ -184,7 +191,7 @@ function newConnection(socket){
             
 
         //io.socket.emit ("waveMic", max);
-        if(allClientsInfo[data.id].amplitud.length>19){
+        if(allClientsInfo[data.id].amplitud.length>17){
             allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
