@@ -11,18 +11,18 @@ var listen = 0;
 
 
 
-function preload(){
+// function preload(){
  
    
-    mic= new p5.AudioIn();
-   // mic.start();
-}
+//    // mic= new p5.AudioIn();
+//    // mic.start();
+// }
 
 $(function() {
     $("#start").on("click", function(e) {
       e.preventDefault();
-     mic.start();
-      //startMicrophoneInput();
+     //mic.start();
+      startMicrophoneInput();
       });
   });
 
@@ -87,9 +87,9 @@ function draw(){
 
     if(settings.id!=undefined){
 
-        var volmic = meter.volume;
+        //var volmic = meter.volume;
         //var volmic = mic.getLevel();
-       let amplitudZ = floor(map(volmic,0,1,0,400));
+       let amplitudZ = floor(map(meter.volume,0,1,0,400));
         //let amplitude = floor(map(amplitudZ,0,100,0,300));
         let amplitude = floor(map(amplitudZ,0,90,0,400));
         var data={
