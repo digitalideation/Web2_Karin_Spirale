@@ -92,7 +92,7 @@ function draw(){
        // let amplitudZ = floor(map(meter.volume,0,1,0,400));
        //let amplitudZ = floor(map(meter.volume,-0.0003,1,0,100));
         //let amplitude = floor(map(amplitudZ,0,100,0,300));
-        let amplitude = floor (10*(map(meter.volume,0,1,0,400)));
+        let amplitude = floor (map(meter.volume,0,1,0,400));
         var data={
             vol:amplitude,
             id:settings.id
@@ -103,7 +103,7 @@ function draw(){
     }
     
 
-        console.log("ich sende"+data.vol)
+       // console.log("ich sende"+data.vol)
   
     
    
