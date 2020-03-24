@@ -7,8 +7,8 @@ var app= express();
 var socket = require('socket.io');
 var path = require('path');
 
-var server = app.listen(3000);
-//var server = app.listen(process.env.PORT || 80);
+//var server = app.listen(3000);
+var server = app.listen(process.env.PORT || 80);
 
 
 var socketIds=[];
