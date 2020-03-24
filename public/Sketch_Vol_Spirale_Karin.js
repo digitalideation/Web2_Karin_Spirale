@@ -9,7 +9,7 @@ let allClients=[];
 
 var listen = 0;
 
-
+var meter;
 
 
 // function preload(){
