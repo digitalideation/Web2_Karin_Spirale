@@ -57,7 +57,7 @@ function setup() {
 }
    function getSettings(data){
     settings=data;
-    //console.log(settings)
+    console.log(settings)
     
 }
 function updateSettings(data){
@@ -81,7 +81,7 @@ function updateSettings(data){
 function draw(){
     function draw(){
         if(listen==1){
-           // console.log(meter.volume);
+            console.log(meter.volume);
         }
     }
 
