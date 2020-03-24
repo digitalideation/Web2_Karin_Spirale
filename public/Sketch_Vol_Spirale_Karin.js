@@ -6,6 +6,7 @@ let settings={
 
 let allClients=[];
 
+let mic;
 
 
 
@@ -19,11 +20,12 @@ function preload(){
 $(function() {
     $("#start").on("click", function(e) {
       e.preventDefault();
-      mic.start();
-    });
+     // mic.start();
+      startMicrophoneInput();
+      });
   });
 
-  
+
 
 
 function setup() {
