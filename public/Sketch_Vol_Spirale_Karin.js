@@ -19,13 +19,13 @@ var listen = 0;
 //    // mic.start();
 // }
 
-$(function() {
-    $("#start").on("click", function(e) {
-      e.preventDefault();
-     //mic.start();
-      startMicrophoneInput();
-      });
-  });
+// $(function() {
+//     $("#start").on("click", function(e) {
+//       e.preventDefault();
+//      //mic.start();
+//       startMicrophoneInput();
+//       });
+//   });
 
   
   
