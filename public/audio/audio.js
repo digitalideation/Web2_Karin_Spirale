@@ -47,10 +47,11 @@ $(buttomID).on("click", function(e) {
     try {
         // monkeypatch getUserMedia
         //mediaDevices.getUserMedia
+       
         navigator.getUserMedia =
             navigator.getUserMedia ||
             navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+            navigator.mozGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.mediaDevices.getUserMedia;
 
         // ask for an audio input
         navigator.getUserMedia(
