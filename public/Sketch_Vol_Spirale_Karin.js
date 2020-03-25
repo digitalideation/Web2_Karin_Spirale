@@ -20,8 +20,8 @@ function preload(){
 $(function() {
     $("#start").on("click", function(e) {
       e.preventDefault();
-     // mic.start();
-      startMicrophoneInput();
+      mic.start();
+      //startMicrophoneInput();
       });
   });
 
