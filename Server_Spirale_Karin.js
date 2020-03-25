@@ -150,8 +150,8 @@ function newConnection(socket){
         
 
         function waveMicMsg (data){
-            console.log("mein Schluessel"+ data.id)
-            //console.log(allClientsInfo[data.id]);
+            //console.log("mein Schluessel"+ data.id)
+            console.log(allClientsInfo[data.id]);
 
           
 
@@ -174,7 +174,7 @@ function newConnection(socket){
             
 
         //io.socket.emit ("waveMic", max);
-        if(allClientsInfo[data.id].amplitud.length>18){
+        if(allClientsInfo[data.id].amplitud.length>17){
             allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
