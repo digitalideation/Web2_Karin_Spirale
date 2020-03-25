@@ -48,14 +48,14 @@ $(buttomID).on("click", function(e) {
         // monkeypatch getUserMedia
         //mediaDevices.getUserMedia
        
-        //navigator.getUserMedia =
-        navigator.mediaDevices.getUserMedia=
+        
+             navigator.getUserMedia =
             navigator.getUserMedia ||
             navigator.webkitGetUserMedia ||
             navigator.mozGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
             
         // ask for an audio input
-        navigator.mediaDevices.getUserMedia(
+        navigator.getUserMedia(
             {
                 "audio": {
                     "mandatory": {
