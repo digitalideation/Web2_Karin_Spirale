@@ -91,7 +91,7 @@ function draw(){
                 var volmic = meter.volume;
                 //var volmic = mic.getLevel();
                // let amplitudZ = floor(map(meter.volume,0,1,0,400));
-               let amplitudZ = floor(map(volmic,-0.0001,1,0,400));
+               let amplitudZ = floor(map(volmic,-0.01,1,0,400));
                 //let amplitude = floor(map(amplitudZ,0,100,0,300));
                 let amplitude = floor (map(amplitudZ,0,90,0,300));
                 var data={
@@ -104,7 +104,7 @@ function draw(){
             }
     
 
-       // console.log("ich sende"+data.vol)
+      console.log("ich sende"+data.vol)
 
 
 
