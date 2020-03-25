@@ -55,7 +55,7 @@ function setup() {
   
 
 }
-   function getSettings(data){
+function getSettings(data){
     settings=data;
     console.log(settings)
     
@@ -79,35 +79,36 @@ function updateSettings(data){
 
 
 function draw(){
-    function draw(){
+
         if(listen==1){
-            console.log(meter.volume);
-        }
-    }
+            //console.log("start listening");
+            //console.log(meter.volume);
 
-    if(settings.id!=undefined){
-       
-        var volmic = meter.volume;
-        //var volmic = mic.getLevel();
-       // let amplitudZ = floor(map(meter.volume,0,1,0,400));
-       //let amplitudZ = floor(map(meter.volume,-0.0003,1,0,100));
-        //let amplitude = floor(map(amplitudZ,0,100,0,300));
-        let amplitude = floor (map(volmic,-0.0001,1,0,100));
-        var data={
-            vol:amplitude,
-            id:settings.id
-        }
-        //console.log(settings.id)
-        socket.emit("waveMic",data)
 
-    }
+
+            if(settings.id!=undefined){
+
+                var volmic = meter.volume;
+                //var volmic = mic.getLevel();
+               // let amplitudZ = floor(map(meter.volume,0,1,0,400));
+               //let amplitudZ = floor(map(meter.volume,-0.0003,1,0,100));
+                //let amplitude = floor(map(amplitudZ,0,100,0,300));
+                let amplitude = floor (map(volmic,-0.0001,1,0,100));
+                var data={
+                    vol:amplitude,
+                    id:settings.id
+                }
+                //console.log(settings.id)
+                socket.emit("waveMic",data)
+
+            }
     
 
        // console.log("ich sende"+data.vol)
-  
-    
-   
- 
+
+
+
+        }
    
  }
 

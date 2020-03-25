@@ -81,6 +81,7 @@ var mediaStreamSource = null;
 function gotStream(stream) {
 
     listen=1;
+    //console.log("start listening 1")
     // Create an AudioNode from the stream.
     mediaStreamSource = audioContext.createMediaStreamSource(stream);
 
