@@ -91,9 +91,9 @@ function draw(){
                 var volmic = meter.volume;
                 //var volmic = mic.getLevel();
                // let amplitudZ = floor(map(meter.volume,0,1,0,400));
-               //let amplitudZ = floor(map(meter.volume,-0.0003,1,0,100));
+               let amplitudZ = floor(map(volmic,-0.0003,1,0,400));
                 //let amplitude = floor(map(amplitudZ,0,100,0,300));
-                let amplitude = floor (map(volmic,-0.0001,1,0,100));
+                let amplitude = floor (map(amplitudZ,0,90,0,300));
                 var data={
                     vol:amplitude,
                     id:settings.id
@@ -126,8 +126,8 @@ function draw(){
         // for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
         for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
           
-            rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],10,10);
-           // rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,2+mywave.Maxamplitude*0.5);
+            
+             rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,2+mywave.Maxamplitude*0.5);
            // ellipse(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x]+mywave.Maxamplitude,mywave.Maxamplitude,5+mywave.Maxamplitude*0.5);
 
             localX++;
