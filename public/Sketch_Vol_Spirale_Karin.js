@@ -11,37 +11,12 @@ var listen = 0;
 
 
 
-// function preload(){
- 
-   
-//    // mic= new p5.AudioIn();
-//    // mic.start();
-// }
-
-// $(function() {
-//     $("#start").on("click", function(e) {
-//       e.preventDefault();
-//      //mic.start();
-//       startMicrophoneInput();
-//       });
-//   });
-
-  
-  
-  
- 
-
-
 function setup() {
     
     createCanvas(windowWidth, windowHeight);
-    //frameRate(40);
+  
  //socket=io.connect("http://localhost:3000/");
      socket=io.connect();
-  
-    //amp =new p5.Amplitude();
-   //mic= new p5.AudioIn();
-    //mic.start();
   
     settings.w=width; //übermittele dem server die Devicebreite
     
@@ -93,7 +68,7 @@ function draw(){
                // let amplitudZ = floor(map(meter.volume,0,1,0,400));
                let amplitudZ = floor(map(volmic,0,1,0,400));
                 //let amplitude = floor(map(amplitudZ,0,100,0,300));
-                let amplitude = floor (map(amplitudZ,0,90,0,300));
+                let amplitude = floor (map(amplitudZ,0,90,0,255));
                 var data={
                     vol:amplitude,
                     id:settings.id
