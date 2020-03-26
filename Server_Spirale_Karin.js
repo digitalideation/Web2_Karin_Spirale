@@ -166,7 +166,7 @@ function newConnection(socket){
  
                 if(allClientsInfo[data.id].Maxamplitude < allClientsInfo[data.id].oldMaxAmp){
                     //allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.96;
-                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.7;
+                    allClientsInfo[data.id].Maxamplitude=allClientsInfo[data.id].oldMaxAmp*0.9;
                 }
  
                 allClientsInfo[data.id].oldMaxAmp = allClientsInfo[data.id].Maxamplitude;
