@@ -49,9 +49,11 @@ $(buttomID).on("click", function(e) {
         //mediaDevices.getUserMedia
        
         
-             navigator.getUserMedia = (navigator.mediaDevices.getUserMedia || navigator.mediaDevices.webkitGetUserMedia || navigator.mediaDevices.mozGetUserMedia || navigator.mediaDevices.msGetUserMedia);
+            // navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
             
         // ask for an audio input
+        if (typeof navigator.mediaDevices.getUserMedia === "undefined"){
+        
         navigator.getUserMedia(
             {
                 "audio": {
@@ -64,6 +66,20 @@ $(buttomID).on("click", function(e) {
                     "optional": []
                 },
             }, gotStream, didntGetStream);
+        }else{ navigator.mediaDevices.getUserMedia(
+            {
+                "audio": {
+                    "mandatory": {
+                        "googEchoCancellation": "false",
+                        "googAutoGainControl": "false",
+                        "googNoiseSuppression": "false",
+                        "googHighpassFilter": "false"
+                    },
+                    "optional": []
+                },
+            }).then(gotStream).catch(didntGetStream);
+
+        }
     } catch (e) {
         alert('getUserMedia threw exception :' + e);
     }
