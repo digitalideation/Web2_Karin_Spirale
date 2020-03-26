@@ -49,7 +49,7 @@ $(buttomID).on("click", function(e) {
         //mediaDevices.getUserMedia
        
         
-             navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+             navigator.getUserMedia = (navigator.mediaDevices.getUserMedia || navigator.mediaDevices.webkitGetUserMedia || navigator.mediaDevices.mozGetUserMedia || navigator.mediaDevices.msGetUserMedia);
             
         // ask for an audio input
         navigator.getUserMedia(
