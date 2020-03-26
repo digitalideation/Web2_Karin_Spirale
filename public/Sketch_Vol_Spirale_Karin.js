@@ -68,7 +68,7 @@ function draw(){
                // let amplitudZ = floor(map(meter.volume,0,1,0,400));
                let amplitudZ = floor(map(volmic,0,1,0,400));
                 //let amplitude = floor(map(amplitudZ,0,100,0,300));
-                let amplitude = floor (map(amplitudZ,0,90,0,255));
+                let amplitude = floor (map(amplitudZ,0,90,0,300));
                 var data={
                     vol:amplitude,
                     id:settings.id
