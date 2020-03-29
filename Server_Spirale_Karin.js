@@ -175,7 +175,7 @@ function newConnection(socket){
             
 
         //io.socket.emit ("waveMic", max);
-        if(allClientsInfo[data.id].amplitud.length>13){
+        if(allClientsInfo[data.id].amplitud.length>14){
             allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
