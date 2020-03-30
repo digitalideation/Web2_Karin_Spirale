@@ -19,7 +19,7 @@ let totalW=0;
 var totalClients=0;
 
 
-let xspacing = 10; // Distance between each horizontal location
+let xspacing = 12; // Distance between each horizontal location
 let period = 600.0; // How many pixels before the wave repeats
 
 let yvalues =[]; // Using an array to store height values for the wave
@@ -140,7 +140,7 @@ function newConnection(socket){
             
 
         //io.socket.emit ("waveMic", max);
-        if(allClientsInfo[data.id].amplitud.length>18){
+        if(allClientsInfo[data.id].amplitud.length>19){
             allClientsInfo[data.id].amplitud.splice(0,1);
         
         }
