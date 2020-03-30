@@ -75,8 +75,8 @@ function newConnection(socket){
                 NewoffsetTop: (totalClients+100)+(Math.random()* 700),
                 offsetbeginX:totalW - data.w,
                 offsetendX:totalW,
-                //xspacing:xspacing+(Math.random()* 20),
-                xspacing:xspacing,
+                xspacing:xspacing+(Math.random()* 20),
+                //xspacing:xspacing,
                 dx:dx,
                 theta:0,
                 
