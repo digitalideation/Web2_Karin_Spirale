@@ -15,8 +15,8 @@ function setup() {
     
     createCanvas(windowWidth, windowHeight);
   
-    socket=io.connect("http://localhost:3000/");
-    // socket=io.connect();
+    //socket=io.connect("http://localhost:3000/");
+    socket=io.connect();
   
     settings.w=width; //übermittele dem server die Devicebreite
     
