@@ -15,8 +15,8 @@ function setup() {
     
     createCanvas(windowWidth, windowHeight);
   
- //socket=io.connect("http://localhost:3000/");
-     socket=io.connect();
+    socket=io.connect("http://localhost:3000/");
+    // socket=io.connect();
   
     settings.w=width; //übermittele dem server die Devicebreite
     
@@ -94,17 +94,12 @@ function draw(){
      //console.log(mywave)
         let localX=0;
         noFill();
-        //stroke(mywave.colr,mywave.colg,mywave.colb,200);
-        //stroke((mywave.Maxamplitude*15),mywave.colg,(mywave.Maxamplitude+100));
-        stroke((mywave.Maxamplitude*3),mywave.colg,mywave.colb);
+         stroke((mywave.Maxamplitude*3),mywave.colg,mywave.colb);
          
-        // for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
         for (let x = floor(mywave.offsetbeginX/mywave.xspacing); x <= floor(mywave.offsetendX/mywave.xspacing);  x++) {
           
-            
-             rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,3+mywave.Maxamplitude*0.5);
-           // ellipse(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x]+mywave.Maxamplitude,mywave.Maxamplitude,5+mywave.Maxamplitude*0.5);
-
+            rect(localX * mywave.xspacing,mywave.NewoffsetTop+mywave.yvalues[x],mywave.Maxamplitude,3+mywave.Maxamplitude*0.5);
+     
             localX++;
          
          }
