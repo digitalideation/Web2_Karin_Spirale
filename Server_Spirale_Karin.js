@@ -51,7 +51,7 @@ function newConnection(socket){
 
 
         function startMsg(data){
-            if (totalClients<18) {
+            if (totalClients<19) {
 
 
         if(!socketIds.includes(socket.id)) {
